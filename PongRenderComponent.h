@@ -38,15 +38,21 @@ namespace megaEngine {
 
         Microsoft::WRL::ComPtr<ID3D11Buffer> vertexBuffer_;
         Microsoft::WRL::ComPtr<ID3D11VertexShader> vs_;
-        Microsoft::WRL::ComPtr<ID3D11PixelShader> ps_;
+        Microsoft::WRL::ComPtr<ID3D11PixelShader> ps_;  
         Microsoft::WRL::ComPtr<ID3D11InputLayout> layout_;
+
+        // Background / checkerboard shaders and CB
+        Microsoft::WRL::ComPtr<ID3D11VertexShader> vs_bg_;
+        Microsoft::WRL::ComPtr<ID3D11PixelShader> ps_bg_;
+        Microsoft::WRL::ComPtr<ID3D11Buffer> cb_bg_;
 
         struct Vertex {
             Vector3 pos;
             Vector4 color;
         };
 
-        void DrawRect(ID3D11DeviceContext* ctx, Vector2 pos, Vector2 size);
+        // Accept color for rectangle (default white)
+        void DrawRect(ID3D11DeviceContext* ctx, Vector2 pos, Vector2 size, Vector4 color = Vector4(1,1,1,1));
         void DrawScore(ID3D11DeviceContext* context);
 
         private:
